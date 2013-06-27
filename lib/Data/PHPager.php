@@ -163,12 +163,6 @@ Returns the key properties of the object (total_entries, entries_per_page, and c
             'current_page'      => $this->current_page(),
         );
     }
-/*=head2 as_json()
-Returns the same key values as the as_hash() method, except in serialised JSON format
-=cut*/
-    function as_json() {
-        return json_encode($this->as_hash());
-    }
 /*=head2 as_hash_full()
 Returns all properties of the object in a keyed list
 =cut*/
@@ -186,12 +180,6 @@ Returns all properties of the object in a keyed list
             'first_item'            => $this->first_item(),
             'last_item'             => $this->last_item(),
         );
-    }
-/*=head2 as_json_full()
-Returns the same key values as the as_hash_full() method, except in serialised JSON format
-=cut*/
-    function as_json_full() {
-        return json_encode($this->as_hash_full());
     }
 }
 ?>
