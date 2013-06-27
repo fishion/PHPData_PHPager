@@ -38,7 +38,7 @@ The Current page which should be displayed. Defaults to 1 if none is provided.
 =head1 Object Methods
 
 =cut*/
-class PHPager {
+class PHPager implements \JsonSerializable {
     private $total_entries = 1;
     private $entries_per_page = 1;
     private $current_page = 1;
@@ -143,6 +143,15 @@ GIven a list of items, returns the subset which should be displayed on the curre
 =cut*/
     function splice($entries) {
         return array_splice($entries, $this->first_index(), $this->entries_on_this_page());
+    }
+
+/*=head2 jsonSerialise()
+Required as this class implements JsonSerializable.
+TODO: if necessary, add another method to allow setting the verbosity of this serialisation
+      to instead call as_hash_full()
+=cut*/
+    public function jsonSerialize(){
+        return $this->as_hash();
     }
 /*=head2 as_hash()
 Returns the key properties of the object (total_entries, entries_per_page, and current_page) in a keyed list format
